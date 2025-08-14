@@ -30,16 +30,6 @@ Testar no MySQL Workbench
 2) Usar o schema `app_db` (vai ser criado automático na primeira subida)
 3) Rodar: `SELECT * FROM items;` pra ver os itens de exemplo
 
-Erros comuns
-- Porta 8080 ocupada: feche a outra app ou mude `server.port` no `application.properties`
-- Usuário/senha errados: ajuste `spring.datasource.username/password`
-- MySQL não iniciado: suba o serviço antes de rodar o app
-
-Customizar pro seu domínio
-1) Copie o pacote `org.example.template` e renomeie as classes
-2) Troque campos da entidade e, no começo, pode manter `spring.jpa.hibernate.ddl-auto=update`
-3) Ajuste os endpoints no controller do seu modelo
-
 Versões
 - Java 17+
 - Hibernate 6 (dialect detecta sozinho)
