@@ -1,7 +1,7 @@
 package controller;
 
-import app.projeto.entity.Empresa;
-import app.projeto.service.EmpresaService;
+import entity.Empresa;
+import service.EmpresaService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

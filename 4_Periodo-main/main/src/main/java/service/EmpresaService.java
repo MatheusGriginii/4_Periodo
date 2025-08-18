@@ -1,7 +1,7 @@
 package service;
 
-import app.projeto.entity.Empresa;
-import app.projeto.repository.EmpresaRepository;
+import entity.Empresa;
+import repository.EmpresaRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

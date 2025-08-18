@@ -1,7 +1,7 @@
 package controller;
 
-import app.projeto.entity.Candidato;
-import app.projeto.service.CandidatoService;
+import entity.Candidato;
+import service.CandidatoService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

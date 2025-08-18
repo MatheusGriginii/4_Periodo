@@ -1,7 +1,7 @@
-package app.projeto.controller;
+package controller;
 
-import app.projeto.entity.Usuario;
-import app.projeto.service.UsuarioService;
+import entity.Usuario;
+import service.UsuarioService;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 

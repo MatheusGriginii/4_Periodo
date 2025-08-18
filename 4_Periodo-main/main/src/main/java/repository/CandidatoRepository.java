@@ -1,6 +1,7 @@
-package app.projeto.repository;
+package repository;
 
-import app.projeto.entity.Candidato;
+
+import entity.Candidato;
 import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 

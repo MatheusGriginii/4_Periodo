@@ -1,7 +1,7 @@
 package service;
 
-import app.projeto.entity.Vaga;
-import app.projeto.repository.VagaRepository;
+import entity.Vaga;
+import repository.VagaRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

@@ -1,8 +1,12 @@
-package app.projeto.entity;
+package entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import entity.Vaga;
 import jakarta.persistence.*;
 import lombok.*;
 import jakarta.validation.constraints.*;
+
+import java.util.List;
 
 @Entity
 @Getter

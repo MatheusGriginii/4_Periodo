@@ -1,8 +1,10 @@
 package service;
 
-import app.projeto.entity.Usuario;
-import app.projeto.repository.UsuarioRepository;
+import entity.Usuario;
+import repository.UsuarioRepository;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class UsuarioService {
@@ -20,6 +22,21 @@ public class UsuarioService {
             usuario.setNome("INCOMPLETO");
         }
         return usuarioRepository.save(usuario);
+    }
+
+    public List<Usuario> listar() {
+        return List.of();
+    }
+
+    public Usuario buscarPorId(Long id) {
+        return null;
+    }
+
+    public Usuario atualizar(Long id, Usuario usuario) {
+        return usuario;
+    }
+
+    public void deletar(Long id) {
     }
 
     // outros métodos CRUD...

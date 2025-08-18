@@ -1,12 +1,15 @@
 package entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
-import lombok.*;
-import jakarta.validation.constraints.*;
+import lombok.Getter;
+import lombok.Setter;
 import java.util.List;
+import jakarta.validation.constraints.NotBlank;
 
 @Entity
-@Getter @Setter
+@Getter
+@Setter
 public class Vaga {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

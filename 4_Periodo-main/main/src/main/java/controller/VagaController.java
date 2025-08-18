@@ -1,7 +1,7 @@
 package controller;
 
-import app.projeto.entity.Vaga;
-import app.projeto.service.VagaService;
+import entity.Vaga;
+import service.VagaService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
