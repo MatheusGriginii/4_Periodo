@@ -1,6 +1,6 @@
-package repository;
+package app.projeto.repository;
 
-import entity.Empresa;
+import app.projeto.entity.Empresa;
 import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 

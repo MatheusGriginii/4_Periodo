@@ -1,10 +1,11 @@
-package controller;
+package app.projeto.controller;
 
-import entity.Vaga;
-import service.VagaService;
+import app.projeto.entity.Vaga;
+import app.projeto.service.VagaService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/vagas")
@@ -25,13 +26,23 @@ public class VagaController {
         return vagaService.buscarPorId(id);
     }
 
+    @GetMapping("/buscar")
+    public List<Vaga> buscarPorTitulo(@RequestParam String titulo) {
+        return vagaService.buscarPorTitulo(titulo);
+    }
+
+    @GetMapping("/por-empresa")
+    public List<Vaga> buscarPorEmpresa(@RequestParam String empresaNome) {
+        return vagaService.buscarPorEmpresa(empresaNome);
+    }
+
     @PostMapping
-    public Vaga criar(@RequestBody Vaga vaga) {
+    public Vaga criar(@Valid @RequestBody Vaga vaga) {
         return vagaService.criar(vaga);
     }
 
     @PutMapping("/{id}")
-    public Vaga atualizar(@PathVariable Long id, @RequestBody Vaga vaga) {
+    public Vaga atualizar(@PathVariable Long id, @Valid @RequestBody Vaga vaga) {
         return vagaService.atualizar(id, vaga);
     }
 

@@ -1,7 +1,8 @@
-package controller;
+package app.projeto.controller;
 
-import entity.Candidato;
-import service.CandidatoService;
+import app.projeto.entity.Candidato;
+import app.projeto.service.CandidatoService;
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -25,13 +26,23 @@ public class CandidatoController {
         return candidatoService.buscarPorId(id);
     }
 
+    @GetMapping("/buscar")
+    public List<Candidato> buscarPorNome(@RequestParam String nome) {
+        return candidatoService.buscarPorNome(nome);
+    }
+
+    @GetMapping("/por-titulo")
+    public List<Candidato> buscarPorTituloVaga(@RequestParam String titulo) {
+        return candidatoService.buscarPorTituloVaga(titulo);
+    }
+
     @PostMapping
-    public Candidato criar(@RequestBody Candidato candidato) {
+    public Candidato criar(@Valid @RequestBody Candidato candidato) {
         return candidatoService.criar(candidato);
     }
 
     @PutMapping("/{id}")
-    public Candidato atualizar(@PathVariable Long id, @RequestBody Candidato candidato) {
+    public Candidato atualizar(@PathVariable Long id, @Valid @RequestBody Candidato candidato) {
         return candidatoService.atualizar(id, candidato);
     }
 

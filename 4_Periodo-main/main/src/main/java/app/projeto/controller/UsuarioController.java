@@ -1,8 +1,10 @@
-package controller;
+package app.projeto.controller;
 
-import entity.Usuario;
-import service.UsuarioService;
+import app.projeto.entity.Usuario;
+import app.projeto.service.UsuarioService;
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 
 @RestController
@@ -24,13 +26,28 @@ public class UsuarioController {
         return usuarioService.buscarPorId(id);
     }
 
+    @GetMapping("/buscar")
+    public List<Usuario> buscarPorNome(@RequestParam String nome) {
+        return usuarioService.buscarPorNome(nome);
+    }
+
+    @GetMapping("/cidade")
+    public List<Usuario> buscarPorCidade(@RequestParam String cidade) {
+        return usuarioService.buscarPorCidade(cidade);
+    }
+
+    @GetMapping("/busca-por")
+    public List<Usuario> buscarPorNomeECidade(@RequestParam String nome, @RequestParam String cidade) {
+        return usuarioService.buscarPorNomeECidade(nome, cidade);
+    }
+
     @PostMapping
-    public Usuario criar(@RequestBody Usuario usuario) {
+    public Usuario criar(@Valid @RequestBody Usuario usuario) {
         return usuarioService.criar(usuario);
     }
 
     @PutMapping("/{id}")
-    public Usuario atualizar(@PathVariable Long id, @RequestBody Usuario usuario) {
+    public Usuario atualizar(@PathVariable Long id, @Valid @RequestBody Usuario usuario) {
         return usuarioService.atualizar(id, usuario);
     }
 
