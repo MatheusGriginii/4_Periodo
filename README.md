@@ -17,10 +17,6 @@ cd 4_Periodo-main
 mvn -f .\main\pom.xml spring-boot:run
 ```
 
-3. **Acessar a API**
-- URL base: `http://localhost:8080`
-- Banco: H2 em memória (configurado automaticamente)
-
 ## Endpoints disponíveis
 
 ### Usuarios
