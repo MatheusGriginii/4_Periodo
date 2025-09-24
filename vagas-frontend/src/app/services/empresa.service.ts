@@ -35,4 +35,8 @@ export class EmpresaService {
   buscarPorNome(nome: string): Observable<Empresa[]> {
     return this.http.get<Empresa[]>(`${this.baseUrl}/buscar?nome=${nome}`);
   }
+
+  buscarPorTituloVaga(titulo: string): Observable<Empresa[]> {
+    return this.http.get<Empresa[]>(`${this.baseUrl}/por-titulo?titulo=${titulo}`);
+  }
 }

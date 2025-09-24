@@ -36,7 +36,7 @@ export class VagaService {
     return this.http.get<Vaga[]>(`${this.baseUrl}/buscar?titulo=${titulo}`);
   }
 
-  buscarPorEmpresa(empresaId: number): Observable<Vaga[]> {
-    return this.http.get<Vaga[]>(`${this.baseUrl}/empresa/${empresaId}`);
+  buscarPorEmpresa(empresaNome: string): Observable<Vaga[]> {
+    return this.http.get<Vaga[]>(`${this.baseUrl}/por-empresa?empresaNome=${empresaNome}`);
   }
 }

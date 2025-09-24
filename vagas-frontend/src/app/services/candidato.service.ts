@@ -35,4 +35,8 @@ export class CandidatoService {
   buscarPorNome(nome: string): Observable<Candidato[]> {
     return this.http.get<Candidato[]>(`${this.baseUrl}/buscar?nome=${nome}`);
   }
+
+  buscarPorTituloVaga(titulo: string): Observable<Candidato[]> {
+    return this.http.get<Candidato[]>(`${this.baseUrl}/por-titulo?titulo=${titulo}`);
+  }
 }
