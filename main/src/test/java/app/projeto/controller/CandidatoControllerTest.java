@@ -18,6 +18,7 @@ import java.util.List;
 import static org.mockito.ArgumentMatchers.any;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @WebMvcTest(CandidatoController.class)
@@ -72,6 +73,28 @@ public class CandidatoControllerTest {
         Mockito.when(candidatoService.listar()).thenReturn(List.of(candidato));
 
         mockMvc.perform(get("/candidatos"))
+                .andExpect(status().isOk());
+    }
+
+    @Test
+    @DisplayName("TESTE DE INTEGRAÇÃO – Deve buscar candidato por ID")
+    void deveBuscarCandidatoPorId() throws Exception {
+        candidato.setId(1L);
+        Mockito.when(candidatoService.buscarPorId(1L)).thenReturn(candidato);
+
+        mockMvc.perform(get("/candidatos/1"))
+                .andExpect(status().isOk());
+    }
+
+    @Test
+    @DisplayName("TESTE DE INTEGRAÇÃO – Deve atualizar candidato")
+    void deveAtualizarCandidato() throws Exception {
+        candidato.setId(1L);
+        Mockito.when(candidatoService.atualizar(any(Long.class), any(Candidato.class))).thenReturn(candidato);
+
+        mockMvc.perform(put("/candidatos/1")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(objectMapper.writeValueAsString(candidato)))
                 .andExpect(status().isOk());
     }
 }
