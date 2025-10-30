@@ -3,6 +3,8 @@ package app.projeto.controller;
 import app.projeto.entity.Candidato;
 import app.projeto.service.CandidatoService;
 import jakarta.validation.Valid;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -37,8 +39,9 @@ public class CandidatoController {
     }
 
     @PostMapping
-    public Candidato criar(@Valid @RequestBody Candidato candidato) {
-        return candidatoService.criar(candidato);
+    public ResponseEntity<Candidato> criar(@Valid @RequestBody Candidato candidato) {
+        Candidato candidatoCriado = candidatoService.criar(candidato);
+        return ResponseEntity.status(HttpStatus.CREATED).body(candidatoCriado);
     }
 
     @PutMapping("/{id}")
