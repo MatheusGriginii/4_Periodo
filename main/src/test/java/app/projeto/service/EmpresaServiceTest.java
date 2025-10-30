@@ -80,4 +80,24 @@ public class EmpresaServiceTest {
         empresaService.deletar(1L);
         verify(empresaRepository, times(1)).deleteById(1L);
     }
+
+    @Test
+    @DisplayName("TESTE DE UNIDADE – Deve buscar empresas por nome")
+    void deveBuscarEmpresasPorNome() {
+        when(empresaRepository.findByNomeIgnoreCaseContaining("Empresa")).thenReturn(List.of(new Empresa()));
+        assertFalse(empresaService.buscarPorNome("Empresa").isEmpty());
+        verify(empresaRepository, times(1)).findByNomeIgnoreCaseContaining("Empresa");
+    }
+
+    @Test
+    @DisplayName("TESTE DE UNIDADE – Deve atualizar empresa")
+    void deveAtualizarEmpresa() {
+        Empresa empresa = new Empresa();
+        empresa.setId(1L);
+        empresa.setNome("Empresa Atualizada");
+        when(empresaRepository.findById(1L)).thenReturn(java.util.Optional.of(empresa));
+        when(empresaRepository.save(any(Empresa.class))).thenReturn(empresa);
+        assertNotNull(empresaService.atualizar(1L, empresa));
+        verify(empresaRepository, times(1)).save(any(Empresa.class));
+    }
 }

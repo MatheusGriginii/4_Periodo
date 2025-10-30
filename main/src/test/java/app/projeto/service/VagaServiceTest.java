@@ -84,4 +84,25 @@ public class VagaServiceTest {
         vagaService.deletar(1L);
         verify(vagaRepository, times(1)).deleteById(1L);
     }
+
+    @Test
+    @DisplayName("TESTE DE UNIDADE – Deve buscar vagas por título")
+    void deveBuscarVagasPorTitulo() {
+        when(vagaRepository.findByTituloIgnoreCaseContaining("Java")).thenReturn(List.of(new Vaga()));
+        assertFalse(vagaService.buscarPorTitulo("Java").isEmpty());
+        verify(vagaRepository, times(1)).findByTituloIgnoreCaseContaining("Java");
+    }
+
+    @Test
+    @DisplayName("TESTE DE UNIDADE – Deve atualizar vaga")
+    void deveAtualizarVaga() {
+        Vaga vaga = new Vaga();
+        vaga.setId(1L);
+        vaga.setTitulo("Desenvolvedor Python");
+        vaga.setEmpresa(new Empresa());
+        when(vagaRepository.findById(1L)).thenReturn(java.util.Optional.of(vaga));
+        when(vagaRepository.save(any(Vaga.class))).thenReturn(vaga);
+        assertNotNull(vagaService.atualizar(1L, vaga));
+        verify(vagaRepository, times(1)).save(any(Vaga.class));
+    }
 }

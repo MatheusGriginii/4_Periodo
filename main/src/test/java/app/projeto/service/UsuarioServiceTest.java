@@ -86,4 +86,27 @@ public class UsuarioServiceTest {
         usuarioService.deletar(1L);
         verify(usuarioRepository, times(1)).deleteById(1L);
     }
+
+    @Test
+    @DisplayName("TESTE DE UNIDADE – Deve buscar usuários por nome")
+    void deveBuscarUsuariosPorNome() {
+        when(usuarioRepository.findByNomeIgnoreCaseContaining("João")).thenReturn(List.of(new Usuario()));
+        assertFalse(usuarioService.buscarPorNome("João").isEmpty());
+        verify(usuarioRepository, times(1)).findByNomeIgnoreCaseContaining("João");
+    }
+
+    @Test
+    @DisplayName("TESTE DE UNIDADE – Deve atualizar usuário")
+    void deveAtualizarUsuario() {
+        Usuario usuario = new Usuario();
+        usuario.setId(1L);
+        usuario.setNome("João Atualizado");
+        List<Vaga> vagas = new ArrayList<>();
+        vagas.add(new Vaga());
+        usuario.setVagas(vagas);
+        when(usuarioRepository.findById(1L)).thenReturn(java.util.Optional.of(usuario));
+        when(usuarioRepository.save(any(Usuario.class))).thenReturn(usuario);
+        assertNotNull(usuarioService.atualizar(1L, usuario));
+        verify(usuarioRepository, times(1)).save(any(Usuario.class));
+    }
 }

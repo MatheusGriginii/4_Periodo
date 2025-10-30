@@ -78,4 +78,12 @@ public class EnderecoServiceTest {
         assertFalse(enderecoService.buscarPorCidade("São Paulo").isEmpty());
         verify(enderecoRepository, times(1)).findByCidadeIgnoreCaseContaining("São Paulo");
     }
+
+    @Test
+    @DisplayName("TESTE DE UNIDADE – Deve buscar endereços por estado")
+    void deveBuscarEnderecoPorEstado() {
+        when(enderecoRepository.findByEstadoIgnoreCaseContaining("SP")).thenReturn(List.of(new Endereco()));
+        assertFalse(enderecoService.buscarPorEstado("SP").isEmpty());
+        verify(enderecoRepository, times(1)).findByEstadoIgnoreCaseContaining("SP");
+    }
 }
